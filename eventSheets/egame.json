@@ -137,6 +137,47 @@
 				}
 			],
 			"sid": 464554314005975
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Setup",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 916201561807473
+						}
+					],
+					"actions": [
+						{
+							"id": "set-max-speed",
+							"objectClass": "Auto",
+							"sid": 705392343955366,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"max-speed": "100"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "Auto",
+							"sid": 963693986625052,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"acceleration": "300"
+							}
+						}
+					],
+					"sid": 419332404493213
+				}
+			],
+			"sid": 778110461999662
 		}
 	],
 	"sid": 598902124520211
