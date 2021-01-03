@@ -1,0 +1,24 @@
+{
+	"name": "playerCars",
+	"plugin-id": "Sprite",
+	"sid": 647894508761422,
+	"instanceVariables": [
+		{
+			"name": "direction",
+			"type": "string",
+			"desc": "",
+			"sid": 286181222562354
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction2",
+			"sid": 165527258817201
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Auto"
+	]
+}

@@ -1,0 +1,143 @@
+{
+	"name": "eGame",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Steuerung des Autos"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "playerCars",
+							"sid": 230473794432777,
+							"behaviorType": "8Direction2"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Auto",
+							"sid": 321895531374728,
+							"parameters": {
+								"animation": "\"move_\" & Self.direction",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 328006859501105
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 554262433533651,
+							"parameters": {
+								"key": 38
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 951736633690554,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"up\""
+							}
+						}
+					],
+					"sid": 442660817400814
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 208490663882862,
+							"parameters": {
+								"key": 39
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 440125067856333,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"right\""
+							}
+						}
+					],
+					"sid": 255129292661166
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 471228106291898,
+							"parameters": {
+								"key": 40
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 263502127021038,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"down\""
+							}
+						}
+					],
+					"sid": 145270312979345
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 120272672201719,
+							"parameters": {
+								"key": 37
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 412677287734817,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"left\""
+							}
+						}
+					],
+					"sid": 631798403312962
+				}
+			],
+			"sid": 464554314005975
+		}
+	],
+	"sid": 598902124520211
+}
