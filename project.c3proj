@@ -8,6 +8,14 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -18,14 +26,6 @@
 			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
-			"author": "Scirra",
-			"version": "r225",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
-			"id": "Tilemap",
-			"name": "Tilemap",
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
@@ -51,11 +51,18 @@
 	"objectTypes": {
 		"items": [
 			"Auto",
-			"Keyboard",
-			"Tilemap_Level1",
-			"Tilemap_Level1_Collision"
+			"Keyboard"
 		],
-		"subfolders": []
+		"subfolders": [
+			{
+				"items": [
+					"Tilemap_Level1",
+					"Tilemap_Level1_Collision"
+				],
+				"subfolders": [],
+				"name": "tilemaps"
+			}
+		]
 	},
 	"autosaveData": null,
 	"containers": [],
