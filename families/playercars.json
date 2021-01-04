@@ -8,6 +8,24 @@
 			"type": "string",
 			"desc": "",
 			"sid": 286181222562354
+		},
+		{
+			"name": "MaxSpeed",
+			"type": "number",
+			"desc": "",
+			"sid": 281895508553657
+		},
+		{
+			"name": "Acceleration",
+			"type": "number",
+			"desc": "",
+			"sid": 933713376125715
+		},
+		{
+			"name": "Deceleration",
+			"type": "number",
+			"desc": "",
+			"sid": 190325321879290
 		}
 	],
 	"behaviorTypes": [
@@ -15,6 +33,11 @@
 			"behaviorId": "EightDir",
 			"name": "8Direction2",
 			"sid": 165527258817201
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 308494296047900
 		}
 	],
 	"effectTypes": [],

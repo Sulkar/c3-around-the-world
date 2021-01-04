@@ -31,6 +31,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "solid",
 			"name": "Solid",
@@ -45,13 +53,24 @@
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Scroll To",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
 		}
 	],
 	"uniqueId": "eruh2kq6znz",
 	"objectTypes": {
 		"items": [
 			"Auto",
-			"Keyboard"
+			"Keyboard",
+			"ground_speed",
+			"ground_mud",
+			"ground_ice"
 		],
 		"subfolders": [
 			{
@@ -68,7 +87,8 @@
 	"containers": [],
 	"families": {
 		"items": [
-			"playerCars"
+			"playerCars",
+			"grounds"
 		],
 		"subfolders": []
 	},

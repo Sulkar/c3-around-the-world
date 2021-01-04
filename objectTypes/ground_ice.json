@@ -1,0 +1,20 @@
+{
+	"name": "ground_ice",
+	"plugin-id": "TiledBg",
+	"sid": 971494899369672,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 250,
+		"height": 250,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "png",
+		"exportQuality": 0.8,
+		"imageSpriteId": 8808405,
+		"useCollisionPoly": true
+	}
+}

@@ -178,6 +178,89 @@
 				}
 			],
 			"sid": 464554314005975
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "playerCars",
+					"sid": 786005678327402,
+					"parameters": {
+						"object": "grounds"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-max-speed",
+					"objectClass": "playerCars",
+					"sid": 407211633633279,
+					"behaviorType": "8Direction2",
+					"parameters": {
+						"max-speed": "Self.MaxSpeed * grounds.MaxSpeed"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "playerCars",
+					"sid": 950764991451054,
+					"behaviorType": "8Direction2",
+					"parameters": {
+						"acceleration": "Self.Acceleration* grounds.Acceleration"
+					}
+				},
+				{
+					"id": "set-deceleration",
+					"objectClass": "playerCars",
+					"sid": 390237776512826,
+					"behaviorType": "8Direction2",
+					"parameters": {
+						"deceleration": "Self.Deceleration* grounds.Deceleration"
+					}
+				}
+			],
+			"sid": 506606986259429
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 128091900962794
+				}
+			],
+			"actions": [
+				{
+					"id": "set-max-speed",
+					"objectClass": "playerCars",
+					"sid": 748890135466602,
+					"behaviorType": "8Direction2",
+					"parameters": {
+						"max-speed": "Self.MaxSpeed"
+					}
+				},
+				{
+					"id": "set-acceleration",
+					"objectClass": "playerCars",
+					"sid": 785104282861848,
+					"behaviorType": "8Direction2",
+					"parameters": {
+						"acceleration": "Self.Acceleration"
+					}
+				},
+				{
+					"id": "set-deceleration",
+					"objectClass": "playerCars",
+					"sid": 242658452304289,
+					"behaviorType": "8Direction2",
+					"parameters": {
+						"deceleration": "Self.Deceleration"
+					}
+				}
+			],
+			"sid": 650360379428650
 		}
 	],
 	"sid": 598902124520211

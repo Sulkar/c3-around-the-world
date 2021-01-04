@@ -1,0 +1,32 @@
+{
+	"name": "grounds",
+	"plugin-id": "TiledBg",
+	"sid": 702254810935093,
+	"instanceVariables": [
+		{
+			"name": "MaxSpeed",
+			"type": "number",
+			"desc": "",
+			"sid": 724419373491150
+		},
+		{
+			"name": "Acceleration",
+			"type": "number",
+			"desc": "",
+			"sid": 905658587731200
+		},
+		{
+			"name": "Deceleration",
+			"type": "number",
+			"desc": "",
+			"sid": 338571224110199
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"ground_speed",
+		"ground_mud",
+		"ground_ice"
+	]
+}
