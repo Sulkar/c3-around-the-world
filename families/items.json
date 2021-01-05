@@ -1,0 +1,19 @@
+{
+	"name": "items",
+	"plugin-id": "Sprite",
+	"sid": 541955866892055,
+	"instanceVariables": [
+		{
+			"name": "itemType",
+			"type": "string",
+			"desc": "",
+			"sid": 233293296694058
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"item_fuel",
+		"item_money"
+	]
+}

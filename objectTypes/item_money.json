@@ -1,0 +1,57 @@
+{
+	"name": "item_money",
+	"plugin-id": "Sprite",
+	"sid": 280422328826963,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 19,
+						"height": 20,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9884422,
+						"collisionPoly": {
+							"points": [
+								0.2631578947368421,
+								0.25,
+								0.5,
+								0,
+								0.6842105263157895,
+								0.25,
+								0.8421052631578947,
+								0.5,
+								0.9473684210526315,
+								0.95,
+								0.5,
+								0.95,
+								0,
+								0.95,
+								0.10526315789473684,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 382767974616781,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

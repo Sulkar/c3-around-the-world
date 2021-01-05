@@ -1,0 +1,30 @@
+{
+	"name": "destructables",
+	"plugin-id": "Sprite",
+	"sid": 509209291207850,
+	"instanceVariables": [
+		{
+			"name": "life",
+			"type": "number",
+			"desc": "",
+			"sid": 788233129094300
+		},
+		{
+			"name": "type",
+			"type": "string",
+			"desc": "",
+			"sid": 924179382840036
+		},
+		{
+			"name": "curLife",
+			"type": "number",
+			"desc": "",
+			"sid": 494858545112161
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"barrier"
+	]
+}

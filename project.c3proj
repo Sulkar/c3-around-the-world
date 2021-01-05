@@ -16,6 +16,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -24,16 +32,16 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Keyboard",
-			"name": "Keyboard",
+			"id": "Text",
+			"name": "Text",
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
 		},
 		{
 			"type": "plugin",
-			"id": "TiledBg",
-			"name": "Tiled Background",
+			"id": "Keyboard",
+			"name": "Keyboard",
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
@@ -66,20 +74,57 @@
 	"uniqueId": "eruh2kq6znz",
 	"objectTypes": {
 		"items": [
-			"Auto",
-			"Keyboard",
-			"ground_speed",
-			"ground_mud",
-			"ground_ice"
+			"Keyboard"
 		],
 		"subfolders": [
 			{
 				"items": [
-					"Tilemap_Level1",
-					"Tilemap_Level1_Collision"
+					"Tilemap_Level1_Background",
+					"Tilemap_Level1_Collision",
+					"Tilemap_Level1"
 				],
 				"subfolders": [],
 				"name": "tilemaps"
+			},
+			{
+				"items": [
+					"ground_ice",
+					"ground_mud",
+					"ground_speed"
+				],
+				"subfolders": [],
+				"name": "grounds"
+			},
+			{
+				"items": [
+					"Auto"
+				],
+				"subfolders": [],
+				"name": "cars"
+			},
+			{
+				"items": [
+					"item_fuel",
+					"item_money"
+				],
+				"subfolders": [],
+				"name": "items"
+			},
+			{
+				"items": [
+					"txt_debug",
+					"txt_fuel",
+					"txt_money"
+				],
+				"subfolders": [],
+				"name": "HUD"
+			},
+			{
+				"items": [
+					"barrier"
+				],
+				"subfolders": [],
+				"name": "destructable"
 			}
 		]
 	},
@@ -88,13 +133,16 @@
 	"families": {
 		"items": [
 			"playerCars",
-			"grounds"
+			"grounds",
+			"items",
+			"destructables"
 		],
 		"subfolders": []
 	},
 	"layouts": {
 		"items": [
-			"Level1"
+			"Level1",
+			"HUD"
 		],
 		"subfolders": []
 	},

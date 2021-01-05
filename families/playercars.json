@@ -26,6 +26,24 @@
 			"type": "number",
 			"desc": "",
 			"sid": 190325321879290
+		},
+		{
+			"name": "Money",
+			"type": "number",
+			"desc": "",
+			"sid": 678660091653207
+		},
+		{
+			"name": "Fuel",
+			"type": "number",
+			"desc": "",
+			"sid": 893248841085681
+		},
+		{
+			"name": "battle",
+			"type": "boolean",
+			"desc": "",
+			"sid": 548137902748343
 		}
 	],
 	"behaviorTypes": [

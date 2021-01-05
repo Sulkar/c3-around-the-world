@@ -21,19 +21,19 @@
 						{
 							"id": "set-max-speed",
 							"objectClass": "Auto",
-							"sid": 172495888907754,
+							"sid": 845203021667780,
 							"behaviorType": "8Direction2",
 							"parameters": {
-								"max-speed": "100"
+								"max-speed": "Self.MaxSpeed"
 							}
 						},
 						{
 							"id": "set-acceleration",
 							"objectClass": "Auto",
-							"sid": 200281366957250,
+							"sid": 973683635700975,
 							"behaviorType": "8Direction2",
 							"parameters": {
-								"acceleration": "300"
+								"acceleration": "Self.Acceleration"
 							}
 						}
 					],
@@ -180,87 +180,602 @@
 			"sid": 464554314005975
 		},
 		{
-			"eventType": "block",
-			"conditions": [
+			"eventType": "group",
+			"disabled": false,
+			"title": "Grounds",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
 				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "playerCars",
-					"sid": 786005678327402,
-					"parameters": {
-						"object": "grounds"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-max-speed",
-					"objectClass": "playerCars",
-					"sid": 407211633633279,
-					"behaviorType": "8Direction2",
-					"parameters": {
-						"max-speed": "Self.MaxSpeed * grounds.MaxSpeed"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "playerCars",
+							"sid": 678227207187419,
+							"parameters": {
+								"object": "grounds"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-max-speed",
+							"objectClass": "playerCars",
+							"sid": 968043528809467,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"max-speed": "Self.MaxSpeed * grounds.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "playerCars",
+							"sid": 886224769352473,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"acceleration": "Self.Acceleration* grounds.Acceleration"
+							}
+						},
+						{
+							"id": "set-deceleration",
+							"objectClass": "playerCars",
+							"sid": 928471947213491,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"deceleration": "Self.Deceleration* grounds.Deceleration"
+							}
+						}
+					],
+					"sid": 916385935120576
 				},
 				{
-					"id": "set-acceleration",
-					"objectClass": "playerCars",
-					"sid": 950764991451054,
-					"behaviorType": "8Direction2",
-					"parameters": {
-						"acceleration": "Self.Acceleration* grounds.Acceleration"
-					}
-				},
-				{
-					"id": "set-deceleration",
-					"objectClass": "playerCars",
-					"sid": 390237776512826,
-					"behaviorType": "8Direction2",
-					"parameters": {
-						"deceleration": "Self.Deceleration* grounds.Deceleration"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 641832823546930
+						}
+					],
+					"actions": [
+						{
+							"id": "set-max-speed",
+							"objectClass": "playerCars",
+							"sid": 702553438235889,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"max-speed": "Self.MaxSpeed"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "playerCars",
+							"sid": 716704955781326,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"acceleration": "Self.Acceleration"
+							}
+						},
+						{
+							"id": "set-deceleration",
+							"objectClass": "playerCars",
+							"sid": 166989972238263,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"deceleration": "Self.Deceleration"
+							}
+						}
+					],
+					"sid": 187305358154394
 				}
 			],
-			"sid": 506606986259429
+			"sid": 376813314772403
 		},
 		{
-			"eventType": "block",
-			"conditions": [
+			"eventType": "group",
+			"disabled": false,
+			"title": "Items",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
 				{
-					"id": "else",
-					"objectClass": "System",
-					"sid": 128091900962794
+					"eventType": "comment",
+					"text": ""
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "playerCars",
+							"sid": 720757373695109,
+							"parameters": {
+								"object": "items"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "call-mapped-function",
+							"objectClass": "Functions",
+							"sid": 647558330655972,
+							"parameters": {
+								"name": "\"itemType\"",
+								"string": "items.itemType",
+								"forward-params": "0"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "items",
+							"sid": 709594098458719
+						}
+					],
+					"sid": 964932033836815
+				},
+				{
+					"eventType": "comment",
+					"text": "map functions for items (when car hits item -> specific itemType function is called)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 652386622845056
+						}
+					],
+					"actions": [
+						{
+							"id": "map-function",
+							"objectClass": "Functions",
+							"sid": 621621153089750,
+							"parameters": {
+								"name": "\"itemType\"",
+								"string": "\"fuel\"",
+								"function": "hitItem_fuel"
+							}
+						},
+						{
+							"id": "map-function",
+							"objectClass": "Functions",
+							"sid": 214722554260088,
+							"parameters": {
+								"name": "\"itemType\"",
+								"string": "\"money\"",
+								"function": "hitItem_money"
+							}
+						}
+					],
+					"sid": 230255937777209
+				},
+				{
+					"functionName": "hitItem_money",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 736921592487926,
+							"parameters": {
+								"instance-variable": "Money",
+								"value": "playerCars.Money + 50"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "txt_money",
+							"sid": 976821593670087,
+							"parameters": {
+								"text": "playerCars.Money"
+							}
+						}
+					],
+					"sid": 194984070467366
+				},
+				{
+					"functionName": "hitItem_fuel",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 919519678205445,
+							"parameters": {
+								"instance-variable": "Fuel",
+								"value": "playerCars.Fuel + 20"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "txt_fuel",
+							"sid": 911723982069296,
+							"parameters": {
+								"text": "playerCars.Fuel"
+							}
+						}
+					],
+					"sid": 458265542865378
 				}
 			],
+			"sid": 101367014668176
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Destructables",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": ""
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "playerCars",
+							"sid": 883660453411846,
+							"parameters": {
+								"object": "destructables"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "call_destructable",
+							"sid": 563846850163596,
+							"parameters": [
+								"destructables.type",
+								"destructables.UID"
+							]
+						},
+						{
+							"callFunction": "knockback",
+							"sid": 751856096200976,
+							"parameters": [
+								"playerCars.direction",
+								"10"
+							]
+						}
+					],
+					"sid": 150361802614952
+				},
+				{
+					"eventType": "comment",
+					"text": "map functions for items (when car hits item -> specific itemType function is called)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 804060925370000
+						}
+					],
+					"actions": [
+						{
+							"id": "map-function",
+							"objectClass": "Functions",
+							"sid": 343290308058240,
+							"parameters": {
+								"name": "\"destructableType\"",
+								"string": "\"barrier\"",
+								"function": "destructable_barrier"
+							}
+						}
+					],
+					"sid": 327440774424065
+				},
+				{
+					"functionName": "call_destructable",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "destructable_type",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 300617784045585
+						},
+						{
+							"name": "destructable_uid",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 648005368558979
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "call-mapped-function",
+							"objectClass": "Functions",
+							"sid": 442760025896163,
+							"parameters": {
+								"name": "\"destructableType\"",
+								"string": "destructable_type",
+								"forward-params": "1"
+							}
+						}
+					],
+					"sid": 806363681875657
+				},
+				{
+					"functionName": "destructable_barrier",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "destructable_uid",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 277809011534828
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 366490147202210,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "destructables",
+									"sid": 759320358917488,
+									"parameters": {
+										"unique-id": "destructable_uid"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "destructables",
+									"sid": 475751190715065,
+									"parameters": {
+										"instance-variable": "curLife",
+										"value": "Self.curLife- 5"
+									}
+								}
+							],
+							"sid": 317780785943320,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 200788954912767,
+											"parameters": {
+												"first-value": "destructables.curLife",
+												"comparison": 3,
+												"second-value": "destructables.life / 2"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "destructables",
+											"sid": 615311143866795,
+											"parameters": {
+												"frame-number": "1"
+											}
+										}
+									],
+									"sid": 870367724266103
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 584067974719016,
+											"parameters": {
+												"first-value": "destructables.curLife",
+												"comparison": 3,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "destructables",
+											"sid": 885435098290298
+										}
+									],
+									"sid": 504853673689621
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 751311689810411
+		},
+		{
+			"functionName": "knockback",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "direction",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 672024190469427
+				},
+				{
+					"name": "knockback_distance",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 602311431246301
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
 			"actions": [
 				{
-					"id": "set-max-speed",
+					"id": "shake",
 					"objectClass": "playerCars",
-					"sid": 748890135466602,
-					"behaviorType": "8Direction2",
+					"sid": 104083504611112,
+					"behaviorType": "ScrollTo",
 					"parameters": {
-						"max-speed": "Self.MaxSpeed"
+						"magnitude": "5",
+						"duration": "0.1",
+						"mode": "reducing-magnitude"
 					}
 				},
 				{
-					"id": "set-acceleration",
+					"id": "set-enabled",
 					"objectClass": "playerCars",
-					"sid": 785104282861848,
-					"behaviorType": "8Direction2",
+					"sid": 302531567707072,
+					"behaviorType": "ScrollTo",
 					"parameters": {
-						"acceleration": "Self.Acceleration"
-					}
-				},
-				{
-					"id": "set-deceleration",
-					"objectClass": "playerCars",
-					"sid": 242658452304289,
-					"behaviorType": "8Direction2",
-					"parameters": {
-						"deceleration": "Self.Deceleration"
+						"state": "disabled"
 					}
 				}
 			],
-			"sid": 650360379428650
+			"sid": 353798295872770,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 237640112996550,
+							"parameters": {
+								"variable": "direction",
+								"comparison": 0,
+								"value": "\"right\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "playerCars",
+							"sid": 838968164908648,
+							"parameters": {
+								"x": "Self.X-knockback_distance"
+							}
+						}
+					],
+					"sid": 523564993510779
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 144765245989142,
+							"parameters": {
+								"variable": "direction",
+								"comparison": 0,
+								"value": "\"left\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "playerCars",
+							"sid": 956846481287806,
+							"parameters": {
+								"x": "Self.X + knockback_distance"
+							}
+						}
+					],
+					"sid": 601834460709397
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 544641850879199,
+							"parameters": {
+								"variable": "direction",
+								"comparison": 0,
+								"value": "\"up\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-y",
+							"objectClass": "playerCars",
+							"sid": 190616472378294,
+							"parameters": {
+								"y": "Self.Y - knockback_distance"
+							}
+						}
+					],
+					"sid": 844663170611978
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 923311148226128,
+							"parameters": {
+								"variable": "direction",
+								"comparison": 0,
+								"value": "\"down\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-y",
+							"objectClass": "playerCars",
+							"sid": 867618122616004,
+							"parameters": {
+								"y": "Self.Y + knockback_distance"
+							}
+						}
+					],
+					"sid": 445451109793349
+				}
+			]
 		}
 	],
 	"sid": 598902124520211
