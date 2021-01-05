@@ -313,7 +313,10 @@
 						"Deceleration": 500,
 						"Money": 0,
 						"Fuel": 0,
-						"battle": false
+						"battle": false,
+						"lastEnemyUid": 0,
+						"lastEnemyPositionX": 0,
+						"lastEnemyPositionY": 0
 					},
 					"behaviors": {
 						"8Direction2": {
@@ -326,15 +329,10 @@
 								"default-controls": true,
 								"enabled": true
 							}
-						},
-						"ScrollTo": {
-							"properties": {
-								"enabled": true
-							}
 						}
 					},
 					"world": {
-						"x": 727.8356180287608,
+						"x": 739.9486871948378,
 						"y": 102.75216744640448,
 						"width": 36,
 						"height": 24,
@@ -549,9 +547,9 @@
 					},
 					"uid": 21,
 					"instanceVariables": {
-						"life": 10000,
+						"life": 100,
 						"type": "barrier",
-						"curLife": 1000
+						"curLife": 100
 					},
 					"behaviors": {},
 					"world": {
@@ -561,6 +559,41 @@
 						"height": 23.36009890105946,
 						"originX": -1.3333333333333333,
 						"originY": 0.7857142857142857,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "sprKamera",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 22,
+					"instanceVariables": {},
+					"behaviors": {
+						"ScrollTo": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 789.2891676188973,
+						"y": 177.1751850840373,
+						"width": 10,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

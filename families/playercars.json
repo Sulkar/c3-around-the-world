@@ -44,6 +44,24 @@
 			"type": "boolean",
 			"desc": "",
 			"sid": 548137902748343
+		},
+		{
+			"name": "lastEnemyUid",
+			"type": "number",
+			"desc": "",
+			"sid": 979707700678173
+		},
+		{
+			"name": "lastEnemyPositionX",
+			"type": "number",
+			"desc": "",
+			"sid": 823714330624919
+		},
+		{
+			"name": "lastEnemyPositionY",
+			"type": "number",
+			"desc": "",
+			"sid": 495108232431308
 		}
 	],
 	"behaviorTypes": [
@@ -51,11 +69,6 @@
 			"behaviorId": "EightDir",
 			"name": "8Direction2",
 			"sid": 165527258817201
-		},
-		{
-			"behaviorId": "scrollto",
-			"name": "ScrollTo",
-			"sid": 308494296047900
 		}
 	],
 	"effectTypes": [],

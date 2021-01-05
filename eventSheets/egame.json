@@ -45,6 +45,104 @@
 		{
 			"eventType": "group",
 			"disabled": false,
+			"title": "EveryTick",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Wenn Spieler im \"Battle\" dann beende diesen, wenn ein gewisser Abstand zum \"Gegner\" ist."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "playerCars",
+							"sid": 707504237515658,
+							"parameters": {
+								"instance-variable": "battle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "txt_debug",
+							"sid": 530082789903125,
+							"parameters": {
+								"text": "\"battle\""
+							}
+						}
+					],
+					"sid": 567787257551997,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 194048919108230,
+									"parameters": {
+										"first-value": "distance(playerCars.X, playerCars.Y, playerCars.lastEnemyPositionX, playerCars.lastEnemyPositionY)",
+										"comparison": 5,
+										"second-value": "30"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "playerCars",
+									"sid": 875196363279333,
+									"parameters": {
+										"instance-variable": "battle",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 374873593309501
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Kamera verfolgt den Spieler bis zu einem Abstand von 10 Pixeln. Das Bild scrollt immer zur Kamera. Dadurch zuckt das Bild nicht, wenn sich das Auto schnell bewegt. -> smooth scrolling"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 109140267674230,
+							"parameters": {
+								"first-value": "distance(playerCars.X, playerCars.Y, sprKamera.x, sprKamera.y)",
+								"comparison": 4,
+								"second-value": "10"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "sprKamera",
+							"sid": 724003118297712,
+							"parameters": {
+								"x": "lerp(Self.X,playerCars.X,0.1)",
+								"y": "lerp(Self.y,playerCars.y,0.1)"
+							}
+						}
+					],
+					"sid": 548999802154922
+				}
+			],
+			"sid": 126506419853659
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
 			"title": "Player",
 			"description": "",
 			"isActiveOnStart": true,
@@ -175,6 +273,143 @@
 						}
 					],
 					"sid": 631798403312962
+				},
+				{
+					"eventType": "comment",
+					"text": "// Function: Player wird zurückgeworfen, wenn er z.B. eine Wand anfährt"
+				},
+				{
+					"functionName": "knockback",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "direction",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 672024190469427
+						},
+						{
+							"name": "knockback_distance",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 602311431246301
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 178656470414735,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 615370486775122,
+									"parameters": {
+										"variable": "direction",
+										"comparison": 0,
+										"value": "\"right\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-x",
+									"objectClass": "playerCars",
+									"sid": 438661962438880,
+									"parameters": {
+										"x": "Self.X-knockback_distance"
+									}
+								}
+							],
+							"sid": 148426349014491
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 511860155767841,
+									"parameters": {
+										"variable": "direction",
+										"comparison": 0,
+										"value": "\"left\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-x",
+									"objectClass": "playerCars",
+									"sid": 479399216688343,
+									"parameters": {
+										"x": "Self.X + knockback_distance"
+									}
+								}
+							],
+							"sid": 277821456843854
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 582225230959732,
+									"parameters": {
+										"variable": "direction",
+										"comparison": 0,
+										"value": "\"up\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "playerCars",
+									"sid": 909308136943934,
+									"parameters": {
+										"y": "Self.Y - knockback_distance"
+									}
+								}
+							],
+							"sid": 155491089029017
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 988765177560176,
+									"parameters": {
+										"variable": "direction",
+										"comparison": 0,
+										"value": "\"down\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "playerCars",
+									"sid": 930454588657985,
+									"parameters": {
+										"y": "Self.Y + knockback_distance"
+									}
+								}
+							],
+							"sid": 928894717252246
+						}
+					]
 				}
 			],
 			"sid": 464554314005975
@@ -423,7 +658,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": ""
+					"text": "Trifft ein Auto ein Hindernis, wird das entsprechende Hindernis gesucht, dessen Leben verringert und der Spieler wird etwas zurückgeworfen. Des Weiteren werden die Koordinaten des Hindernis gespeichert."
 				},
 				{
 					"eventType": "block",
@@ -439,19 +674,46 @@
 					],
 					"actions": [
 						{
+							"id": "set-boolean-instvar",
+							"objectClass": "playerCars",
+							"sid": 413273431264059,
+							"parameters": {
+								"instance-variable": "battle",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 230067859935635,
+							"parameters": {
+								"instance-variable": "lastEnemyPositionX",
+								"value": "destructables.X"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "playerCars",
+							"sid": 712696915920626,
+							"parameters": {
+								"instance-variable": "lastEnemyPositionY",
+								"value": "destructables.Y"
+							}
+						},
+						{
+							"callFunction": "knockback",
+							"sid": 849335547740767,
+							"parameters": [
+								"playerCars.direction",
+								"10"
+							]
+						},
+						{
 							"callFunction": "call_destructable",
 							"sid": 563846850163596,
 							"parameters": [
 								"destructables.type",
 								"destructables.UID"
-							]
-						},
-						{
-							"callFunction": "knockback",
-							"sid": 751856096200976,
-							"parameters": [
-								"playerCars.direction",
-								"10"
 							]
 						}
 					],
@@ -622,160 +884,6 @@
 				}
 			],
 			"sid": 751311689810411
-		},
-		{
-			"functionName": "knockback",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "direction",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 672024190469427
-				},
-				{
-					"name": "knockback_distance",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 602311431246301
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "shake",
-					"objectClass": "playerCars",
-					"sid": 104083504611112,
-					"behaviorType": "ScrollTo",
-					"parameters": {
-						"magnitude": "5",
-						"duration": "0.1",
-						"mode": "reducing-magnitude"
-					}
-				},
-				{
-					"id": "set-enabled",
-					"objectClass": "playerCars",
-					"sid": 302531567707072,
-					"behaviorType": "ScrollTo",
-					"parameters": {
-						"state": "disabled"
-					}
-				}
-			],
-			"sid": 353798295872770,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 237640112996550,
-							"parameters": {
-								"variable": "direction",
-								"comparison": 0,
-								"value": "\"right\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-x",
-							"objectClass": "playerCars",
-							"sid": 838968164908648,
-							"parameters": {
-								"x": "Self.X-knockback_distance"
-							}
-						}
-					],
-					"sid": 523564993510779
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 144765245989142,
-							"parameters": {
-								"variable": "direction",
-								"comparison": 0,
-								"value": "\"left\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-x",
-							"objectClass": "playerCars",
-							"sid": 956846481287806,
-							"parameters": {
-								"x": "Self.X + knockback_distance"
-							}
-						}
-					],
-					"sid": 601834460709397
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 544641850879199,
-							"parameters": {
-								"variable": "direction",
-								"comparison": 0,
-								"value": "\"up\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-y",
-							"objectClass": "playerCars",
-							"sid": 190616472378294,
-							"parameters": {
-								"y": "Self.Y - knockback_distance"
-							}
-						}
-					],
-					"sid": 844663170611978
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 923311148226128,
-							"parameters": {
-								"variable": "direction",
-								"comparison": 0,
-								"value": "\"down\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-y",
-							"objectClass": "playerCars",
-							"sid": 867618122616004,
-							"parameters": {
-								"y": "Self.Y + knockback_distance"
-							}
-						}
-					],
-					"sid": 445451109793349
-				}
-			]
 		}
 	],
 	"sid": 598902124520211
