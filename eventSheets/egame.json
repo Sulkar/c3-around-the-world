@@ -35,6 +35,15 @@
 							"parameters": {
 								"acceleration": "Self.Acceleration"
 							}
+						},
+						{
+							"id": "set-deceleration",
+							"objectClass": "Auto",
+							"sid": 261097027009034,
+							"behaviorType": "8Direction2",
+							"parameters": {
+								"deceleration": "Self.Deceleration"
+							}
 						}
 					],
 					"sid": 786222952134426
@@ -65,16 +74,7 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "set-text",
-							"objectClass": "txt_debug",
-							"sid": 530082789903125,
-							"parameters": {
-								"text": "\"battle\""
-							}
-						}
-					],
+					"actions": [],
 					"sid": 567787257551997,
 					"children": [
 						{
