@@ -1,4 +1,4 @@
 # around-the-world
 A Construct 3 project...
 
-![image](myData/images/aroundtheworld.png)
+![image](./myData/images/around-the-world.png)
